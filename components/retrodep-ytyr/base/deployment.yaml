@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: retrodep-ytyr
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: retrodep-ytyr
+    app.kubernetes.io/part-of: test-app-qtin
+  name: retrodep-ytyr
+spec:
+  replicas: 0
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: my-retrodep
+      app.kubernetes.io/instance: retrodep-ytyr
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: my-retrodep
+        app.kubernetes.io/instance: retrodep-ytyr
+    spec:
+      containers:
+      - image: retrodep:latest
+        name: my-retrodep
+        ports:
+        - containerPort: 8081
+        resources:
+          limits:
+            cpu: 500m
+            memory: 1Gi
+status: {}
